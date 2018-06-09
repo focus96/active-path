@@ -19,15 +19,27 @@ class ActivePathServiceProvider extends ServiceProvider
         ], 'config');
 
         Blade::directive('isNav', function ($navName, $className = null) {
-            return "<?php echo ActivePath::isNav($navName, $className); ?>";
+            if($className) {
+                return "<?php echo ActivePath::isNav($navName, $className); ?>";
+            }else {
+                return "<?php echo ActivePath::isNav($navName); ?>";
+            }
         });
 
         Blade::directive('isPath', function ($navName, $className = null) {
-            return "<?php echo ActivePath::isPath($navName, $className); ?>";
+            if($className) {
+                return "<?php echo ActivePath::isPath($navName, $className); ?>";
+            }else {
+                return "<?php echo ActivePath::isPath($navName); ?>";
+            }
         });
 
         Blade::directive('isSegment', function ($navName, $value, $className = null) {
-            return "<?php echo ActivePath::isSegment($navName, $value, $className); ?>";
+            if($className) {
+                return "<?php echo ActivePath::isSegment($navName, $value, $className); ?>";
+            }else {
+                return "<?php echo ActivePath::isSegment($navName, $value); ?>";
+            }
         });
     }
 
