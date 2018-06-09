@@ -1,0 +1,24 @@
+{
+    "name": "tarasenkoevgenii/activepath",
+    "description": "Help in the definition of active menu items.",
+    "authors": [
+        {
+            "name": "Tarasenko Evgenii",
+            "email": "tarasenkoevgenii96@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "type": "package",
+    "license": "mit",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TarasenkoEvgenii\\ActivePath\\ActivePathServiceProvider"
+            ],
+            "aliases": {
+                "ActivePath": "TarasenkoEvgenii\\ActivePath\\Fasade\\ActivePath"
+            }
+        }
+    }
+}
