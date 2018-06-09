@@ -7,7 +7,7 @@
             "email": "tarasenkoevgenii96@gmail.com"
         }
     ],
-    "minimum-stability": "0.0.1",
+    "minimum-stability": "dev",
     "type": "package",
     "license": "mit",
     "require": {
