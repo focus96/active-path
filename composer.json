@@ -25,7 +25,7 @@
                 "TarasenkoEvgenii\\ActivePath\\ActivePathServiceProvider"
             ],
             "aliases": {
-                "ActivePath": "TarasenkoEvgenii\\ActivePath\\Fasade\\ActivePath"
+                "ActivePath": "TarasenkoEvgenii\\ActivePath\\Facade\\ActivePath"
             }
         }
     }
