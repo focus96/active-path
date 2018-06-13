@@ -1,6 +1,6 @@
 {
     "name": "tarasenkoevgenii/activepath",
-    "description": "Help in the definition of active menu items.",
+    "description": "Help in the definition of active menu items for Laravel.",
     "authors": [
         {
             "name": "Tarasenko Evgenii",

@@ -1,6 +1,6 @@
 <?php
 
-namespace TarasenkoEvgenii\ActivePath;
+namespace App\Support;
 
 use Illuminate\Support\Facades\Request;
 
@@ -27,14 +27,16 @@ class ActivePath
      */
     public function isNav(string $navName, string $className = null): string
     {
-        $urls = config( $this->configFile . '.' . $navName);
+        $urls = config($this->configFile . '.' . $navName);
 
         if (is_null($urls)) {
             return $this->inactiveClass;
         } elseif (!is_array($urls)) {
+            if($this->isNotUrl($urls)) return $this->inactiveClass;
             return Request::is($urls) ? ($className ?? $this->activeClass) : $this->inactiveClass;
         } else {
             foreach ($urls as $url) {
+                if($this->isNotUrl($url)) return $this->inactiveClass;
                 if (Request::is($url)) return ($className ?? $this->activeClass);
             }
         }
@@ -73,6 +75,25 @@ class ActivePath
             if (Request::segment($segment) == $v) return ($className ?? $this->activeClass);
         }
         return $this->inactiveClass;
+    }
+
+    /**
+     * Если данный пункт меню не должен подсвечиваться при данном урле - true
+     * Необзодимо для пересекающихся урлов, напрмер
+     * /project/1111/show -> /project/ * /show -> true
+     * /project/insides/111/show -> /project/ * /show -> true
+     * Урл "НЕ" начинается с восклицательного знака: "!..."
+     *
+     * @param string $url
+     * @return bool
+     */
+    protected function isNotUrl(string $url):bool
+    {
+        $parts = explode('!', $url);
+        if(count($parts) === 1) return false;
+        if(!Request::is($parts[1])) return false;
+
+        return true;
     }
 
     public function setActiveClass(string $className): void
