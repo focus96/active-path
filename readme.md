@@ -59,6 +59,8 @@ Usage:
 If you have intersecting paths and you need to exclude the path, use "!" before path. Excluding paths must go first to an array:
 
 ```php
+<?php
+
 return [
     // Menu name.
     'main' => [
